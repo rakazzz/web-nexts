@@ -2,6 +2,8 @@ import {prisma} from "@/../route"
 import { HiArrowSmLeft } from 'react-icons/hi';
 import Link from 'next/link'
 import FormItem from "@/app/components/formItem";
+import { revalidatePath } from 'next/cache';
+
 
 
 export default function Page(){
@@ -26,6 +28,8 @@ export default function Page(){
                 tujuan : dataX.get('for') as string,
             }
         })
+        revalidatePath('/admin/suratpengantardesa')
+        
         
         // console.log(dataX)
 

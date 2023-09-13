@@ -1,8 +1,10 @@
 import {prisma} from "@/../route"
+import { revalidatePath } from 'next/cache';
+
 
 
 export default async function Page() {
-
+    revalidatePath('/admin/suratpengantardesa')
     async function setTrue(title: string) {
 
     }
