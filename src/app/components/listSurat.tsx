@@ -17,18 +17,16 @@ const surat = [
 export default function ListSurat() {
 
     return(
-        <div className='bg-sky-700 rounded-3xl h-screen sm:rounded-none p-3 overflow-y-auto'>
+        <div className='bg-sky-700 rounded-tr-3xl rounded-tl-3xl h-screen mx-auto sm:rounded-none p-3 overflow-y-auto '>
         {surat.map((item)=>
-        <Link href={item.to} passHref>
-            <div className='items-center justify-center flex flex-row shadow-xl transition ease-in-out bg-yellow-400 max-w-sm p-4 mx-3 m-2 pt-3 rounded-md hover:scale-90'>
+            <div className='mx-auto shadow-xl transition ease-in-out bg-yellow-400 max-w-md p-4 m-2 pt-3 rounded-md hover:scale-90'>
+                <Link href={item.to} className="flex flex-row" passHref>
                 <h1 className='text-white flex-1'>
                    {item.name} 
                 </h1>
-                
                     <HiArrowSmRight className='h-6 w-6 text-white hover:text-gray-300' />
-                
+                </Link> 
             </div>
-        </Link>
         )}
         </div>
     )

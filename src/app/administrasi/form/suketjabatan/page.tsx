@@ -1,20 +1,23 @@
+
 import { prisma } from "@/../route";
 import { HiArrowSmLeft } from 'react-icons/hi';
 import Link from 'next/link';
 import InputItem from "./inputItem";
 import { google } from 'googleapis';
 import Docxtemplater from 'docxtemplater';
+import fs from 'fs';
 
 // Initialize the Google Drive API client
 const drive = google.drive({
   version: 'v3',
   auth: '35552792444-1oauq8bdotdbf1i817mce9hdgiqcl0q1.apps.googleusercontent.com',
 });
-
-async function generateWordDocument(data: FormData, templateContent: Buffer) {
+ 
+async function generateWordDocument(data: FormData, templatePath: string) {
   try {
-    const doc = new Docxtemplater();
-    doc.load(templateContent);
+
+    const templateContent = fs.readFileSync(templatePath);
+    const doc = new Docxtemplater(templateContent);
 
     doc.setData({
       name: data.get('name') as string,
@@ -29,7 +32,7 @@ async function generateWordDocument(data: FormData, templateContent: Buffer) {
     doc.render();
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const fileName = `output_${timestamp}.docx`;
-    const buffer = doc.getZip().generate({ type: 'nodebuffer' });
+    const buffer = doc.getZip();
     await drive.files.create({
       requestBody: {
         name: fileName,
@@ -48,16 +51,11 @@ async function generateWordDocument(data: FormData, templateContent: Buffer) {
   }
 }
 
-export default function Page() {
+export default async function Page() {
   async function addData(dataX: FormData) {
+    'use server'
     try {
-      const templateFileId = '1mKTG42CfWBi6vi3Ke-KQs-c8rzHORfhK';
-      const { data: templateContent } = await drive.files.export({
-        fileId: templateFileId,
-        mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      });
-
-      await generateWordDocument(dataX, templateContent);
+      const templatePath = 'direktorinya woi';
 
       await prisma.suketjabatan.create({
         data: {
@@ -70,6 +68,8 @@ export default function Page() {
           jabatan: dataX.get('jabatan') as string,
         },
       });
+
+      await generateWordDocument(dataX, templatePath)
 
       console.log('User input data added to the database.');
 
@@ -86,10 +86,11 @@ export default function Page() {
         </Link>
         <h1 className="font-bold">Surat Keterangan Jabatan</h1>
       </div>
-      <form className="w-full max-w-lg mx-auto p-4" onSubmit={addData}>
+      <form className="w-full max-w-lg mx-auto p-4" action={addData}>
         <InputItem />
         <button type="submit">Generate Certificate</button>
       </form>
     </div>
   );
 }
+ 

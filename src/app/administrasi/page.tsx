@@ -26,7 +26,9 @@ export default function Page(){
                 </div>
             </div> */}
            </nav>
-           <ListSurat/>
+           <div className="mx-auto">
+                <ListSurat/>
+           </div>
            {/* <div className='bg-gray-200 rounded-3xl  sm:rounded-none p-3 overflow-y-auto'>
             {surat.map((item)=>
             <Link href='/administrasi/form' passHref>

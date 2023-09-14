@@ -1,7 +1,9 @@
 import {prisma} from "@/../route"
+import { revalidatePath, } from "next/cache"
 
 
 export default async function Page() {
+    revalidatePath('/admin/suketlokasitanah')
 
     async function setTrue(title: string) {
 
