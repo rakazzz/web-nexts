@@ -3,13 +3,13 @@ import { HiArrowSmRight } from 'react-icons/hi';
 
 const surat = [
     {name: 'Surat Pengantar dari Kantor Desa', to:'/administrasi/form/spDariDesa'},
-    {name: 'Surat Izin Membangun Sementara', to:'/administrasi/form/imbS'},
+    // {name: 'Surat Izin Membangun Sementara', to:'/administrasi/form/imbS'},
     {name: 'Surat Keterangan Wali Orang Tua', to:'/administrasi/form/suketWaliOrtu'},
     {name: 'Surat Keterangan Telah Menikah', to:'/administrasi/form/suketTelahMenikah'},
     {name: 'Surat Keterangan Pengurusan Kartu Keluarga', to:'/administrasi/form/suketuruskk'},
     {name: 'Surat Keterangan Domisili', to:'/administrasi/form/suketdomisili'},
     {name: 'Surat Keterangan Belum Terbit E-KTP', to:'/administrasi/form/suketblmktp'},
-    {name: 'Surat Keterangan Jabatan', to:'/administrasi/form/suketjabatan'},
+    // {name: 'Surat Keterangan Jabatan', to:'/administrasi/form/suketjabatan'},
     {name: 'Surat Keterangan Belum Memiliki Rumah', to:'/administrasi/form/suketbelumpunyarumah'},
     {name: 'Surat Keterangan Lokasi Tanah', to:'/administrasi/form/suketlokasitanah'},
     {name: 'Surat Lainnya', to:'/administrasi/customsurat'},

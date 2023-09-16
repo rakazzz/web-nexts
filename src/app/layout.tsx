@@ -1,4 +1,3 @@
-
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
@@ -66,7 +65,8 @@ export default function RootLayout({
               |
               <button>
                 <a className="flex items-center text-xs gap-2" href="https://wa.me/+6282271626686?text=Halo.%20Saya%20ingin%20bertanya%20mengenai%20Website%20SIPAKAMASETA.">
-                  <FaWhatsapp className='h-5 w-5'/>Tim Sipakamaseta
+                  <FaWhatsapp className='h-5 w-5'/>
+                  Tim Sipakamaseta
                 </a>
               </button>
             </div>  
@@ -74,6 +74,7 @@ export default function RootLayout({
         </div>
       </footer>
       <BottomNav></BottomNav>    
+      
 {/* <script src="../path/to/flowbite/dist/flowbite.min.js"></script> */}
       
       </body>

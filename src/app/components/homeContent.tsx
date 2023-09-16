@@ -14,7 +14,7 @@ export default async function Page() {
         <div className='flex flex-row overflow-x-auto  justify-between mx-5 gap-3 pb-3'>
 
             {content.map((item)=>
-            <div className='basis-1/3 p-2 flex-shrink-0 bg-white max-w-sm mt-5 rounded-md shadow-lg'>
+            <div className='basis-5/12 p-2 flex-shrink-0 bg-white max-w-sm mt-5 rounded-md shadow-lg'>
               <img className='rounded-t-md object-cover w-full h-24 sm:h-40' src={item.content} alt=""></img>  
               <div className='font-semibold m-2 text-center'>
                 <p>{item.title}</p> 

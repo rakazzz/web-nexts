@@ -4,6 +4,7 @@ import Image from 'next/image'
 import SlideContent from './components/homeContent'
 import Maps from './components/mapsDesa'
 import { revalidatePath } from 'next/cache'
+import Link from 'next/link'
 
 // export const revalidate = 10
 
@@ -56,7 +57,7 @@ export default async function Home() {
             />
             <p className='absolute text-white bottom-0 right-0 text-5xl lg:text-8xl font-extrabold text-center'>Profil Desa</p>
           </div>
-          <p className='p-6'>Desa ini awalnya salah satu dusun di Desa Bontoala, Kecamatan Pallangga, Kabupaten Gowa. Kemudian dipisah menjadi desa tersendiri bernama Desa Persiapan Tamannyeleng, yang pada saat itu menjadi Kepala Desa Pertama adalah <span className='font-extrabold text-yellow-400'>Yasin Alauddin Karaeng Ngaseng</span>. Setelah resmi menjadi Desa Tamannyeleng, diadakan pemilihan kepala desa, dan terpilih H. S. Mukhtar Tuppu yang menjabat selama 7 tahun.</p>
+          <p className='py-5'>Desa ini awalnya salah satu dusun di Desa Bontoala, Kecamatan Pallangga, Kabupaten Gowa. Kemudian dipisah menjadi desa tersendiri bernama Desa Persiapan Tamannyeleng, yang pada saat itu menjadi Kepala Desa Pertama adalah <span className='font-extrabold text-yellow-400'>Yasin Alauddin Karaeng Ngaseng</span>. Setelah resmi menjadi Desa Tamannyeleng, diadakan pemilihan kepala desa, dan terpilih H. S. Mukhtar Tuppu yang menjabat selama 7 tahun.</p>
           <div className=''>
             <ul className='font-bold text-4xl text-center list-none'>Daftar Dusun
                 <li className='mt-4 text-base text-center font-normal text-lg text-left'>Ta'malalang Timur</li>
@@ -67,7 +68,12 @@ export default async function Home() {
           </div>
         </div>
         <div className='bg-sky-700 mt-3'>
-          <p className=' text-2xl text-white text-center mx-5 pt-3 font-bold'>Produk Ga'de</p>
+          <div className='flex flex-row justify-between items-center'>
+            <p className=' text-xl text-white ml-5 pt-3 font-bold'>Produk Ga'de</p>
+            <Link href='/store'>
+              <p className=' text-md text-white mr-5 pt-3 font-bold hover:text-slate-500'>Lainnya {'>'}</p>
+            </Link>
+          </div>
           
           <SlideContent />
 
