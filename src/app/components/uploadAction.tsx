@@ -119,8 +119,8 @@ export default function handleFile() {
                         TransitionComponent={Transition}
                         keepMounted
                         onClose={handleClose}
-                        aria-describedby="alert-dialog-slide-description"
-                    >
+                        aria-describedby="alert-dialog-slide-description">
+                            
                         <DialogTitle>{"Cocokji?"}</DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-slide-description">

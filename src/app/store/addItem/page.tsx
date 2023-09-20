@@ -9,18 +9,6 @@ import { revalidatePath } from 'next/cache';
 import Handle from '@/app/components/uploadAction'
 
 export default function Page() {
-    // const preset_key = "hyidm3qm"
-    // const cloud_name = "dlunh7tzm"
-
-    // function handleFile(event : any) {
-    //     const file = event.target.files[0]
-    //     const formData = new FormData()
-    //     formData.append('file', file)
-    //     formData.append('upload_preset', preset_key)
-    //     axios.post(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, formData)
-    //     .then(res => console.log(res))
-    //     .catch(err => console.log(err))
-    // }
 
     async function addData(dataF: FormData) {
         'use server'

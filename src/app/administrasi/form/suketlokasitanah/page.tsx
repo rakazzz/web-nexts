@@ -5,36 +5,10 @@ import InputItem from "./inputItem";
 import fs from 'fs';
 import Docxtemplater from 'docxtemplater';
 import fetch from 'node-fetch';
+import PizZip from 'pizzip';
 
 // Your Dropbox access token
-const DROPBOX_ACCESS_TOKEN = 'sl.BmBRyceXLo_uITpWFgmnBxY_0J6maaHhC-3Zq6c_eKGFVCkBp_7ode-owhUz5tE9p3ludqJ898mYDCjh4-_wzVs8_NxRiyAipOWbsZLcGi78W2udfJiVzA4gWjtovWPlpfarYTUOAm5Z';
-
-// Function to upload a file to Dropbox
-async function uploadToDropbox(filePath: string, fileContent: any) {
-  const url = `https://content.dropboxapi.com/2/files/upload`;
-  const headers = {
-    'Authorization': `Bearer ${DROPBOX_ACCESS_TOKEN}`,
-    'Dropbox-API-Arg': JSON.stringify({
-      path: `/Surat-Sipakamaseta/${filePath}`,
-      mode: 'add',
-      autorename: true,
-      mute: false,
-    }),
-    'Content-Type': 'application/octet-stream',
-  };
-
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: fileContent,
-  });
-
-  if (response.status === 200) {
-    console.log('File uploaded to Dropbox successfully.');
-  } else {
-    console.error('Error uploading file to Dropbox:', response.statusText);
-  }
-}
+const DROPBOX_ACCESS_TOKEN = 'sl.Bma-dl0yos2hIhNkz7EGvr3bT8sFsMMkdtbWFOmhdxc3SdVbuy662iPGhj_cgjANdDzSRdCgLreMCTeVilwGDcX9L6g-IDLk97s_bs8hybfZRtvVzBAqc9lPzaSnW4m9HVpk1wJ5VCpA';
 
 export default function Page() {
   async function addData(dataX: { get: any; }) {
@@ -42,10 +16,55 @@ export default function Page() {
     const path = require('path');
     try {
       const templateFilePath = path.join(process.cwd(), './public/templates/temp_suketlokasitanah.docx');
-      const templateContent = fs.readFileSync(templateFilePath);
+      const templateContent = fs.readFileSync(templateFilePath, 'binary');
 
-      const x = await generateWordDocument(dataX, templateContent);
-      console.log('User ${x}');
+      const zip = new PizZip(templateContent);
+
+    const doc = new Docxtemplater(zip, {
+        paragraphLoop: true,
+        linebreaks: true,
+    });
+      
+      doc.setData({
+        name: dataX.get('name') as string,
+        alamattanah: dataX.get('alamattanah') as string,
+        luastanah: dataX.get('luastanah') as string,
+        luasbangunan: dataX.get('luasbangunan') as string,
+        dusun: dataX.get('dusun') as string,
+        nosertiftanah: dataX.get('nosertiftanah') as string,
+      });
+
+      doc.render();
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const fileName = `output_${timestamp}.docx`;
+      const buffer = doc.getZip().generate({
+        type: "nodebuffer",
+        compression: "DEFLATE",
+    });;
+
+      const url = `https://content.dropboxapi.com/2/files/upload`;
+      const headers = {
+        'Authorization': `Bearer ${DROPBOX_ACCESS_TOKEN}`,
+        'Dropbox-API-Arg': JSON.stringify({
+          path: `/Surat-Sipakamaseta/${fileName}`,
+          mode: 'add',
+          autorename: true,
+          mute: false,
+        }),
+        'Content-Type': 'application/octet-stream',
+      };
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: buffer,
+      });
+
+      if (response.status === 200) {
+        console.log('File uploaded to Dropbox successfully.');
+      } else {
+        console.error('Error uploading file to Dropbox:', response.statusText);
+      }
 
       await prisma.suketlokasitanah.create({
         data: {
@@ -59,32 +78,6 @@ export default function Page() {
       });
 
       console.log('User input data added to the database.');
-
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
-  async function generateWordDocument(data: { get: (arg0: string) => string; }, templateContent: Buffer) {
-    'use server'
-    try {
-      const doc = new Docxtemplater(templateContent);
-
-      doc.setData({
-        name: data.get('name') as string,
-        alamattanah: data.get('alamattanah') as string,
-        luastanah: data.get('luastanah') as string,
-        luasbangunan: data.get('luasbangunan') as string,
-        dusun: data.get('dusun') as string,
-        nosertiftanah: data.get('nosertiftanah') as string,
-      });
-
-      doc.render();
-      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-      const fileName = `output_${timestamp}.docx`;
-      const buffer = doc.getZip();
-
-      await uploadToDropbox(fileName, buffer);
 
     } catch (error) {
       console.error('Error:', error);

@@ -1,8 +1,8 @@
 
 export default function Page() {
     return (
-        <div>
-            ini custom surat
+        <div className="mx-auto">
+            Maaf, fitur ini belum tersedia!
                     </div>
     )
 }

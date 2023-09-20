@@ -60,10 +60,10 @@ export default async function Home() {
           <p className='py-5'>Desa ini awalnya salah satu dusun di Desa Bontoala, Kecamatan Pallangga, Kabupaten Gowa. Kemudian dipisah menjadi desa tersendiri bernama Desa Persiapan Tamannyeleng, yang pada saat itu menjadi Kepala Desa Pertama adalah <span className='font-extrabold text-yellow-400'>Yasin Alauddin Karaeng Ngaseng</span>. Setelah resmi menjadi Desa Tamannyeleng, diadakan pemilihan kepala desa, dan terpilih H. S. Mukhtar Tuppu yang menjabat selama 7 tahun.</p>
           <div className=''>
             <ul className='font-bold text-4xl text-center list-none'>Daftar Dusun
-                <li className='mt-4 text-base text-center font-normal text-lg text-left'>Ta'malalang Timur</li>
-                <li className='text-base text-center font-normal text-lg text-left'>Ta'malalang Barat</li>
-                <li className='text-base text-center font-normal text-lg text-left'>Mannyioi</li>
-                <li className='text-base text-center font-normal text-lg text-left'>Tabbinjai</li>
+                <li className='mt-4 text-center font-normal text-lg'>Ta'malalang Timur</li>
+                <li className='text-center font-normal text-lg'>Ta'malalang Barat</li>
+                <li className='text-center font-normal text-lg'>Mannyioi</li>
+                <li className='text-center font-normal text-lg '>Tabbinjai</li>
             </ul>
           </div>
         </div>

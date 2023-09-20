@@ -61,38 +61,6 @@ export default function MobileNav() {
 
         </nav>
         <div>
-                
-                {/* <div className='w-full bg-white fixed bottom-0  mb-3 sm:hidden '>
-                 <ul className='flex flex-row gap-3 justify-center'>
-                    <Link href='/' passHref>
-                        <li className='bg-gray-300 p-2 rounded-lg text-sm'>Home</li>
-                    </Link>
-                    <Link href='/store' passHref>
-                        <li className='bg-gray-300 p-2 rounded-lg text-sm'>Ga'de</li>
-                    </Link>
-                    <Link href='/administrasi' passHref>
-                        <li className='bg-gray-300 p-2 rounded-lg text-sm'>administrasi</li>
-                    </Link>
-                 </ul>
-            
-                </div> */}
-
-                {/* <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
-        <BottomNavigation
-          showLabels
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
-        </BottomNavigation>
-      </Paper> */}
-
-                 
-                
               </div>
               
               

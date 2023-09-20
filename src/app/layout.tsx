@@ -48,10 +48,10 @@ export default function RootLayout({
           <div>
 
           </div>
-          <div className='text-white text-center sm:text-right'>
+          <div className='text-white text-center sm:text-right mx-3'>
             <p  className='text-2xl font-semibold'>Desa Tamannyeleng</p>
             <p  className='font-medium text-md'>Kec. Barombong, Kab. Gowa, Sulawesi Selatan</p>
-              <ul className='mt-4 text-white text-center sm:text-right'>
+              <ul className='mt-4 mx-3 text-start text-white sm:text-right'>
                 <li className='my-3'><Link href='#'>Home </Link></li>
                 <li className='my-3'><Link href='/store'>Ga'de </Link></li>
                 <li className='my-3'><Link href='/administrasi'>Administrasi </Link></li>
