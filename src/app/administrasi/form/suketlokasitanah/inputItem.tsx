@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import * as React from 'react';
 import {PatternFormat} from 'react-number-format';
+import { redirect } from 'next/navigation';
 // import AlertDialogSlide from './dialog';
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -15,8 +16,8 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 export default function InputItem(){
     const  router = useRouter()
     function execute() {
-        // handleClick()
-        // router.push('/')
+        handleClick()
+        redirect('/')
 
     }
     
