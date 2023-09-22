@@ -24,10 +24,9 @@ export default function BottomNav() {
                       setValue(newValue);
                     }}
                   >
-
                       {/* <Link href='/' passHref> */}
                           <BottomNavigationAction href="/" label="Home" icon={<HomeIcon />} />
-                  
+
                       {/* </Link> */}
                       {/* <Link href="/store" passHref> */}
                           <BottomNavigationAction href="/store" label="Ga'de" icon={<StorefrontIcon />} />            

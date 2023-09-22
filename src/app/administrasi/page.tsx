@@ -13,12 +13,12 @@ export default function Page(){
         <div className='min-h-screen'>
            <nav className='max-w-full h-15 flex flex-row bg-white items-center'>
            
-            <Link href='/' passHref replace>
+            <Link className="flex items-center" href='/' passHref replace>
                 <HiArrowSmLeft className='text-black h-10 w-10 m-4' ></HiArrowSmLeft>
+                <div className='mx-auto  w-screen justify-center'>
+                    <p className='text-black font-bold'>Persuratan</p>
+                </div>
             </Link>
-            <div className='mx-auto  w-screen justify-center'>
-                <p className='text-black font-bold'>Persuratan</p>
-            </div>
             {/* <div>
                 <h2>Cari jenis surat</h2>
                 <div className='w-300px'>

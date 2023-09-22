@@ -1,5 +1,6 @@
 'use server'
 import MobileNav from './components/navBar'
+import {FaShoppingBasket, FaPaperclip} from 'react-icons/fa'
 import Image from 'next/image'
 import SlideContent from './components/homeContent'
 import Maps from './components/mapsDesa'
@@ -26,29 +27,28 @@ export default async function Home() {
       
       <div className='bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto rounded-t-3xl'>
         <div className='justify-center rounded-lg'>
-          <div className='sm:flex sm:flex-row sm:max-w-full lg:justify-center overflow-hidden'>
-              <Image 
-                className='-mx-16 float-left lg:float-none'
-                src="/Sekcamnobg.png" 
-                width={280}
-                height={400}
-              
-                alt="Sekretaris Camat" />
-            <div className='sm:flex sm:flex-col sm:px-5 mt-6'>
-              <p className='pt-4 pr-4 text-white text-md lg:text-lg text-right font-light'>Selamat Datang di</p>            
-              <p className='pt-2 pr-5 text-white sm:text-3xl lg:text-4xl text-right font-extrabold'>Website Desa Tamannyeleng</p>            
-              <p className='pt-14 pr-4 text-white text-xl text-right font-medium italic'>
-                "Kami Pemuda,</p>
-                <p className='-mt-1 pr-4 text-white text-xl text-right font-medium italic'>
-                Kami Penggerak."</p>
-                <p className='pt-4 pr-4 text-white text-sm text-right font-medium'>
-                - Abdul Latif Has,</p>
-                <p className='-mt-1 pr-4 text-white text-sm text-right font-medium'>
-                PLT Kepala Desa Tamannyeleng</p>            
+          <div className=' lg:justify-center overflow-hidden'>
+            <div className='sm:flex sm:flex-col sm:px-5 my-10'>
+              <p className='pt-4 pr-4 text-white text-md lg:text-lg text-center font-light'>Selamat Datang di</p>            
+              <p className='pt-2 pr-5 text-white sm:text-3xl lg:text-4xl text-center font-extrabold'>Website Desa Tamannyeleng</p>
+              <div className="flex justify-evenly gap-8 mt-4">
+                  <Link href="/store">
+                    <div className="flex gap-4 items-center my-6 py-6 px-8 rounded-lg hover:scale-90 transition text-xl bg-gradient-to-b from-slate-50 to-slate-300">
+                      <FaShoppingBasket></FaShoppingBasket>
+                      Saya ingin belanja.
+                    </div>
+                  </Link>
+                  <Link href="/administrasi">
+                    <div className="flex gap-4 items-center my-6 py-6 px-8 rounded-lg hover:scale-90 transition text-xl bg-gradient-to-b from-slate-50 to-slate-300">
+                      <FaPaperclip></FaPaperclip>
+                      Saya ingin mengurus surat.
+                    </div>
+                  </Link>
+                </div>                      
             </div>
           </div>
         </div>           
-        <div className='bg-white p-4 max-w-6xl mx-auto flex items-center flex-col'>
+        <div className='bg-white p-4 max-w-6xl mx-auto flex items-center flex-col rounded-md'>
           <div className='relative'>
             <img
             className='w-100 h-100 mx-auto saturate-50'
@@ -57,26 +57,29 @@ export default async function Home() {
             />
             <p className='absolute text-white bottom-0 right-0 text-5xl lg:text-8xl font-extrabold text-center'>Profil Desa</p>
           </div>
-          <p className='py-5'>Desa ini awalnya salah satu dusun di Desa Bontoala, Kecamatan Pallangga, Kabupaten Gowa. Kemudian dipisah menjadi desa tersendiri bernama Desa Persiapan Tamannyeleng, yang pada saat itu menjadi Kepala Desa Pertama adalah <span className='font-extrabold text-yellow-400'>Yasin Alauddin Karaeng Ngaseng</span>. Setelah resmi menjadi Desa Tamannyeleng, diadakan pemilihan kepala desa, dan terpilih H. S. Mukhtar Tuppu yang menjabat selama 7 tahun.</p>
+          <p className='p-5'>Desa ini awalnya salah satu dusun di Desa Bontoala, Kecamatan Pallangga, Kabupaten Gowa. Kemudian dipisah menjadi desa tersendiri bernama Desa Persiapan Tamannyeleng, yang pada saat itu menjadi Kepala Desa Pertama adalah <span className='font-extrabold text-yellow-400'>Yasin Alauddin Karaeng Ngaseng</span>. Setelah resmi menjadi Desa Tamannyeleng, diadakan pemilihan kepala desa, dan terpilih H. S. Mukhtar Tuppu yang menjabat selama 7 tahun.</p>
           <div className=''>
             <ul className='font-bold text-4xl text-center list-none'>Daftar Dusun
                 <li className='mt-4 text-center font-normal text-lg'>Ta'malalang Timur</li>
                 <li className='text-center font-normal text-lg'>Ta'malalang Barat</li>
                 <li className='text-center font-normal text-lg'>Mannyioi</li>
                 <li className='text-center font-normal text-lg '>Tabbinjai</li>
+                <li className='text-center font-normal text-lg '>Tamannyeleng</li>
             </ul>
           </div>
         </div>
-        <div className='bg-sky-700 mt-3'>
-          <div className='flex flex-row justify-between items-center'>
-            <p className=' text-xl text-white ml-5 pt-3 font-bold'>Produk Ga'de</p>
-            <Link href='/store'>
-              <p className=' text-md text-white mr-5 pt-3 font-bold hover:text-slate-500'>Lainnya {'>'}</p>
-            </Link>
-          </div>
-          
+        <div className='bg-sky-700 mt-5 max-w-6xl mx-auto rounded-md'>
+          <div className="p-4">
+            <div className='flex flex-row justify-between items-center px-4'>
+              <p className=' text-4xl text-white font-bold'>Produk Ga'de</p>
+              <Link href='/store'>
+                <p className=' text-md text-white font-bold transition hover:text-yellow-300'>Lainnya {'>'}</p>
+              </Link>
+            </div>
           <SlideContent />
-
+          </div>
+        </div>
+        <div className="mt-5 max-w-6xl mx-auto rounded-md">
           <Maps></Maps>
         </div>
       </div> 

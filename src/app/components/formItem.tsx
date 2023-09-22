@@ -16,7 +16,7 @@ export default function FormItem(){
     const  router = useRouter()
     function execute() {
         handleClick()
-        router.push('/')
+        router.push('/administrasi')
 
     }
     
